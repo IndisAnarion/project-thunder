@@ -7,6 +7,7 @@ struct AuthenticationView: View {
     @State private var password = ""
     @State private var showRegister = false
     @State private var showPassword = false
+    @State private var showForgotPassword = false
     
     var body: some View {
         VStack(spacing: 25) {
@@ -43,6 +44,16 @@ struct AuthenticationView: View {
                     Button(action: { showPassword.toggle() }) {
                         Image(systemName: showPassword ? "eye.slash" : "eye")
                             .foregroundColor(.gray)
+                    }
+                }
+                
+                // Şifremi unuttum bağlantısı
+                HStack {
+                    Spacer()
+                    Button(action: { showForgotPassword = true }) {
+                        Text("Şifremi Unuttum")
+                            .font(.footnote)
+                            .foregroundColor(Color("ThemePrimary"))
                     }
                 }
             }
@@ -84,6 +95,9 @@ struct AuthenticationView: View {
         }
         .sheet(isPresented: $showRegister) {
             RegisterView()
+        }
+        .sheet(isPresented: $showForgotPassword) {
+            ForgotPasswordView()
         }
         .sheet(isPresented: $viewModel.twoFactorRequired) {
             TwoFactorView(
