@@ -33,8 +33,8 @@
 		B53C71572D7B937200079CA9 /* Project Thunder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Thunder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C71672D7B937400079CA9 /* Project ThunderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project ThunderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C71712D7B937400079CA9 /* Project ThunderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project ThunderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B53DECAD2D9D265F001B2C69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B53DECB12D9D439F001B2C69 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B5CD85622D9DE8FC00174187 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -199,9 +199,9 @@
 			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				tr,
+				en,
 			);
 			mainGroup = B53C714E2D7B937200079CA9;
 			minimizedProjectReferenceProxies = 1;
@@ -285,8 +285,8 @@
 		B53DECAC2D9D265F001B2C69 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B53DECAD2D9D265F001B2C69 /* en */,
 				B53DECB12D9D439F001B2C69 /* tr */,
+				B5CD85622D9DE8FC00174187 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

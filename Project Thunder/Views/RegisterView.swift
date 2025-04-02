@@ -223,8 +223,8 @@ class RegisterViewModel: ObservableObject {
     @Published var error: APIError?
     @Published var showSuccessAlert = false
     
-    var alertTitle = "Hata"
-    var alertMessage = "Bir hata oluştu. Lütfen tekrar deneyin."
+    var alertTitle = "error_title".localized
+    var alertMessage = "error_message".localized
     
     private var cancellables = Set<AnyCancellable>()
     private let authService = AuthService()

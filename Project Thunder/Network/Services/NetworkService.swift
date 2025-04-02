@@ -29,7 +29,7 @@ class NetworkService: NetworkServiceProtocol {
                     case 400:
                         throw APIError.badRequest(String(data: data, encoding: .utf8) ?? "Bad Request")
                     case 401:
-                        throw APIError.unauthorized
+                        throw APIError.unauthorized(String(data: data, encoding: .utf8) ?? "Unauthorized")
                     case 404:
                         throw APIError.notFound
                     case 500...599:
@@ -71,7 +71,7 @@ class NetworkService: NetworkServiceProtocol {
                     case 400:
                         throw APIError.badRequest(String(data: data, encoding: .utf8) ?? "Bad Request")
                     case 401:
-                        throw APIError.unauthorized
+                        throw APIError.unauthorized(String(data: data, encoding: .utf8) ?? "Unauthorized")
                     case 404:
                         throw APIError.notFound
                     case 500...599:

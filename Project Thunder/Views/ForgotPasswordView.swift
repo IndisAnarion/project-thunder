@@ -92,7 +92,7 @@ struct ForgotPasswordView: View {
             Alert(
                 title: Text(viewModel.alertTitle),
                 message: Text(viewModel.alertMessage),
-                dismissButton: .default(LocalizedStringKey("ok_button")) {
+                dismissButton: .default(Text(LocalizedStringKey("ok_button"))){
                     if viewModel.isSuccess {
                         dismiss()
                     }

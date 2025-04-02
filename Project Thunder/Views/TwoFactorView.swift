@@ -126,8 +126,8 @@ class TwoFactorViewModel: ObservableObject {
     @Published var isResendDisabled = false
     @Published var resendCountdown = 60
     
-    var alertTitle = "Hata"
-    var alertMessage = "Bir hata oluştu. Lütfen tekrar deneyin."
+    var alertTitle = "error_title".localized
+    var alertMessage = "error_message".localized
     
     private var cancellables = Set<AnyCancellable>()
     private var resendTimer: Timer?

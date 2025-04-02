@@ -120,8 +120,8 @@ struct AuthenticationView: View {
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
-                title: Text(LocalizedStringKey("error_title")),
-                message: Text(LocalizedStringKey("generic_error_message")),
+                title: Text(viewModel.alertTitle),
+                message: Text(viewModel.alertMessage),
                 dismissButton: .default(Text(LocalizedStringKey("ok_button")))
             )
         }
@@ -141,8 +141,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var accessToken: String?
     @Published var user: UserInfo?
     
-    var alertTitle = "Hata"
-    var alertMessage = "Bir hata oluştu. Lütfen tekrar deneyin."
+    var alertTitle = "login_error_title".localized
+    var alertMessage = "login_error_message".localized
     
     private var cancellables = Set<AnyCancellable>()
     private let authService = AuthService()
@@ -158,7 +158,7 @@ class AuthenticationViewModel: ObservableObject {
                     
                     if case .failure(let error) = completion {
                         self?.showAlert = true
-                        self?.alertTitle = "Giriş Hatası"
+                        self?.alertTitle = "login_error_title".localized
                         self?.alertMessage = error.localizedDescription
                     }
                 },
@@ -174,7 +174,7 @@ class AuthenticationViewModel: ObservableObject {
                     } else {
                         // Beklenmeyen durum
                         self?.showAlert = true
-                        self?.alertTitle = "Giriş Hatası"
+                        self?.alertTitle = "error_title".localized
                         self?.alertMessage = response.message ?? "Giriş sırasında bir hata oluştu."
                     }
                 }
