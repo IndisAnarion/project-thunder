@@ -12,7 +12,7 @@ struct ProjectsView: View {
         VStack {
             // Projeleri listeleyen bölüm
             if dataManager.projects.isEmpty {
-                Text("No projects added yet")
+                Text(LocalizedStringKey("no_projects"))
                     .foregroundColor(.gray)
                     .padding()
             } else {
@@ -33,7 +33,7 @@ struct ProjectsView: View {
                             Button(role: .destructive) {
                                 dataManager.deleteProject(at: index)
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Label(LocalizedStringKey("delete"), systemImage: "trash")
                             }
                             
                             Button {
@@ -41,7 +41,7 @@ struct ProjectsView: View {
                                 editingIndex = index
                                 showingEditProject = true
                             } label: {
-                                Label("Edit", systemImage: "pencil")
+                                Label(LocalizedStringKey("edit"), systemImage: "pencil")
                             }
                             .tint(.blue)
                         }
@@ -56,7 +56,7 @@ struct ProjectsView: View {
                 newProject = Project(id: UUID(), title: "", description: "", date: Date())
                 showingAddProject = true 
             }) {
-                Label("Add Project", systemImage: "plus.circle.fill")
+                Label(LocalizedStringKey("add_project"), systemImage: "plus.circle.fill")
             }
             .buttonStyle(.borderedProminent)
             .tint(Color("ThemePrimary"))

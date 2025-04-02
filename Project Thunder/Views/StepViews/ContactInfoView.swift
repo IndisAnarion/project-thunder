@@ -5,19 +5,19 @@ struct ContactInfoView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            TextField("Phone Number", text: $contactInfo.phone)
+            TextField(LocalizedStringKey("phone_number"), text: $contactInfo.phone)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.phonePad)
             
-            TextField("Email", text: $contactInfo.email)
+            TextField(LocalizedStringKey("email_label"), text: $contactInfo.email)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
             
-            TextField("Location", text: $contactInfo.location)
+            TextField(LocalizedStringKey("location"), text: $contactInfo.location)
                 .textFieldStyle(.roundedBorder)
             
-            TextField("Website (Optional)", text: $contactInfo.website)
+            TextField(LocalizedStringKey("website_optional"), text: $contactInfo.website)
                 .textFieldStyle(.roundedBorder)
                 .keyboardType(.URL)
                 .autocapitalization(.none)

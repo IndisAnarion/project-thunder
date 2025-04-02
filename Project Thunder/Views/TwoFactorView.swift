@@ -23,7 +23,7 @@ struct TwoFactorView: View {
                 
                 Spacer()
                 
-                Text("Doğrulama Kodu")
+                Text(LocalizedStringKey("two_factor_title"))
                     .font(.title2)
                     .fontWeight(.bold)
                 
@@ -45,7 +45,7 @@ struct TwoFactorView: View {
                 .foregroundColor(Color("ThemePrimary"))
             
             // Açıklama Metni
-            Text("Email adresinize gönderilen 6 haneli doğrulama kodunu giriniz")
+            Text(LocalizedStringKey("two_factor_description"))
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
@@ -67,7 +67,7 @@ struct TwoFactorView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
-                    Text("Doğrula")
+                    Text(LocalizedStringKey("verify_button"))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
@@ -84,7 +84,7 @@ struct TwoFactorView: View {
             Button(action: {
                 viewModel.resendCode(email: email, password: password)
             }) {
-                Text("Kodu Yeniden Gönder")
+                Text(LocalizedStringKey("resend_code"))
                     .fontWeight(.medium)
                     .foregroundColor(Color("ThemePrimary"))
             }
@@ -93,7 +93,7 @@ struct TwoFactorView: View {
             .opacity(viewModel.isResendDisabled ? 0.5 : 1.0)
             
             if viewModel.isResendDisabled {
-                Text("\(viewModel.resendCountdown) saniye sonra tekrar isteyebilirsiniz")
+                Text(String(format: NSLocalizedString("resend_code_timer", comment: "Resend code timer"), viewModel.resendCountdown))
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -105,7 +105,7 @@ struct TwoFactorView: View {
             Alert(
                 title: Text(viewModel.alertTitle),
                 message: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("Tamam"))
+                dismissButton: .default(Text(LocalizedStringKey("ok_button")))
             )
         }
         .onReceive(viewModel.$loginSuccess) { success in

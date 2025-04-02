@@ -21,7 +21,7 @@ struct ForgotPasswordView: View {
                 
                 Spacer()
                 
-                Text("Şifremi Unuttum")
+                Text(LocalizedStringKey("forgot_password_title"))
                     .font(.title2)
                     .fontWeight(.bold)
                 
@@ -43,7 +43,7 @@ struct ForgotPasswordView: View {
                 .foregroundColor(Color("ThemePrimary"))
             
             // Açıklama
-            Text("Email adresinizi girin, şifre sıfırlama bağlantısı göndereceğiz")
+            Text(LocalizedStringKey("forgot_password_description"))
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
@@ -51,11 +51,11 @@ struct ForgotPasswordView: View {
             
             // Email alanı
             VStack(alignment: .leading, spacing: 8) {
-                Text("Email")
+                Text(LocalizedStringKey("email_label"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
                 
-                TextField("Email", text: $email)
+                TextField(LocalizedStringKey("email_label"), text: $email)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
@@ -65,14 +65,12 @@ struct ForgotPasswordView: View {
             .padding(.horizontal)
             
             // Gönder butonu
-            Button(action: {
-                viewModel.forgotPassword(email: email)
-            }) {
+            Button(action: { viewModel.forgotPassword(email: email) }) {
                 if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
-                    Text("Bağlantı Gönder")
+                    Text(LocalizedStringKey("send_link_button"))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
@@ -94,7 +92,7 @@ struct ForgotPasswordView: View {
             Alert(
                 title: Text(viewModel.alertTitle),
                 message: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("Tamam")) {
+                dismissButton: .default(LocalizedStringKey("ok_button")) {
                     if viewModel.isSuccess {
                         dismiss()
                     }

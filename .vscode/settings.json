@@ -1,0 +1,30 @@
+{
+    "sweetpad.build.xcodeWorkspacePath": "Project Thunder.xcodeproj/project.xcworkspace",
+    "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
+    "lldb.launch.expressions": "native",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#f47a67",
+        "activityBar.background": "#f47a67",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#88f697",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#f47a67",
+        "statusBar.background": "#f05138",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#f47a67",
+        "statusBarItem.remoteBackground": "#f05138",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#f05138",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#f0513899",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#f05138",
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Generate a commit message that is funny, engaging, and detailed. Describe the changes humorously, use emojis, Use bullet points to list changes and include a witty remark at the end, and add a witty remark at the end. Example: '🐛 Fixed a bug that haunted my dreams! Now it's just a ghost in the commit history. 👻'"
+        }
+    ],
+}

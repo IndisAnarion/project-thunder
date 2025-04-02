@@ -37,7 +37,7 @@ struct BasicProfileView: View {
                 }
             }
             
-            TextField("Your Name", text: $name)
+            TextField(LocalizedStringKey("your_name"), text: $name)
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
         }

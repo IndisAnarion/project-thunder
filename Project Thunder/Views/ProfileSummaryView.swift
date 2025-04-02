@@ -48,7 +48,7 @@ struct ProfileSummaryView: View {
                             }
                         }
                         
-                        Text(name.isEmpty ? "Your Name" : name)
+                        Text(LocalizedStringKey(name.isEmpty ? "your_name" : name))
                             .font(.system(size: 28, weight: .bold, design: .rounded))
                             .padding(.top, 8)
                     }
@@ -56,11 +56,11 @@ struct ProfileSummaryView: View {
                     
                     // Biography Card
                     ProfileCard(
-                        title: "Biography",
+                        title: LocalizedStringKey("biography"),
                         isExpanded: expandedSection == "bio",
                         onTap: { toggleSection("bio") }
                     ) {
-                        Text(biography.isEmpty ? "No biography added yet." : biography)
+                        Text(LocalizedStringKey(biography.isEmpty ? "no_biography" : biography))
                             .font(.body)
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
@@ -69,16 +69,16 @@ struct ProfileSummaryView: View {
                     
                     // Contact Information Card
                     ProfileCard(
-                        title: "Contact Information",
+                        title: LocalizedStringKey("contact_information"),
                         isExpanded: expandedSection == "contact",
                         onTap: { toggleSection("contact") }
                     ) {
                         VStack(alignment: .leading, spacing: 12) {
-                            ContactRow(icon: "phone.fill", title: "Phone", value: contactInfo.phone.isEmpty ? "Not provided" : contactInfo.phone)
-                            ContactRow(icon: "envelope.fill", title: "Email", value: contactInfo.email.isEmpty ? "Not provided" : contactInfo.email)
-                            ContactRow(icon: "location.fill", title: "Location", value: contactInfo.location.isEmpty ? "Not provided" : contactInfo.location)
+                            ContactRow(icon: "phone.fill", title: LocalizedStringKey("phone"), value: contactInfo.phone.isEmpty ? NSLocalizedString("not_provided", comment: "") : contactInfo.phone)
+                            ContactRow(icon: "envelope.fill", title: LocalizedStringKey("email"), value: contactInfo.email.isEmpty ? NSLocalizedString("not_provided", comment: "") : contactInfo.email)
+                            ContactRow(icon: "location.fill", title: LocalizedStringKey("location"), value: contactInfo.location.isEmpty ? NSLocalizedString("not_provided", comment: "") : contactInfo.location)
                             if !contactInfo.website.isEmpty {
-                                ContactRow(icon: "link", title: "Website", value: contactInfo.website)
+                                ContactRow(icon: "link", title: LocalizedStringKey("website"), value: contactInfo.website)
                             }
                         }
                         .padding(.vertical, 4)
@@ -86,13 +86,13 @@ struct ProfileSummaryView: View {
                     
                     // References Card
                     ProfileCard(
-                        title: "References",
+                        title: LocalizedStringKey("references"),
                         isExpanded: expandedSection == "references",
                         onTap: { toggleSection("references") },
                         count: dataManager.references.count
                     ) {
                         if dataManager.references.isEmpty {
-                            EmptyStateView(message: "No references added yet", icon: "person.2")
+                            EmptyStateView(message: LocalizedStringKey("no_references"), icon: "person.2")
                         } else {
                             VStack(alignment: .leading, spacing: 12) {
                                 ForEach(dataManager.references) { reference in
@@ -130,13 +130,13 @@ struct ProfileSummaryView: View {
                     
                     // Projects Card
                     ProfileCard(
-                        title: "Projects",
+                        title: LocalizedStringKey("projects"),
                         isExpanded: expandedSection == "projects",
                         onTap: { toggleSection("projects") },
                         count: dataManager.projects.count
                     ) {
                         if dataManager.projects.isEmpty {
-                            EmptyStateView(message: "No projects added yet", icon: "rectangle.stack.fill")
+                            EmptyStateView(message: LocalizedStringKey("no_projects"), icon: "rectangle.stack.fill")
                         } else {
                             VStack(alignment: .leading, spacing: 12) {
                                 ForEach(dataManager.projects) { project in
@@ -171,13 +171,13 @@ struct ProfileSummaryView: View {
                     
                     // Certificates Card
                     ProfileCard(
-                        title: "Certificates",
+                        title: LocalizedStringKey("certificates"),
                         isExpanded: expandedSection == "certificates",
                         onTap: { toggleSection("certificates") },
                         count: dataManager.certificates.count
                     ) {
                         if dataManager.certificates.isEmpty {
-                            EmptyStateView(message: "No certificates added yet", icon: "doc.text.fill")
+                            EmptyStateView(message: LocalizedStringKey("no_certificates"), icon: "doc.text.fill")
                         } else {
                             VStack(alignment: .leading, spacing: 12) {
                                 ForEach(dataManager.certificates) { certificate in
@@ -203,7 +203,7 @@ struct ProfileSummaryView: View {
                                                 Image(systemName: "doc.fill")
                                                     .foregroundColor(.blue)
                                                     .font(.caption)
-                                                Text("Document Attached")
+                                                Text(LocalizedStringKey("document_attached"))
                                                     .font(.caption2)
                                                     .foregroundColor(.blue)
                                             }
@@ -228,7 +228,7 @@ struct ProfileSummaryView: View {
                         HStack {
                             Image(systemName: "pencil.circle.fill")
                                 .font(.title3)
-                            Text("Edit Profile")
+                            Text(LocalizedStringKey("edit_profile"))
                                 .fontWeight(.semibold)
                         }
                         .foregroundColor(.white)
@@ -249,19 +249,19 @@ struct ProfileSummaryView: View {
                 .padding(.horizontal)
                 .frame(minHeight: geometry.size.height)
             }
-            .navigationTitle("Profile")
+            .navigationTitle(LocalizedStringKey("profile"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Button(action: { expandedSection = nil }) {
-                            Label("Collapse All", systemImage: "rectangle.compress.vertical")
+                            Label(LocalizedStringKey("collapse_all"), systemImage: "rectangle.compress.vertical")
                         }
                         Button(action: { 
                             withAnimation {
                                 expandedSection = "bio"
                             }
                         }) {
-                            Label("Biography", systemImage: "text.justify")
+                            Label(LocalizedStringKey("biography"), systemImage: "text.justify")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")
@@ -286,14 +286,14 @@ struct ProfileSummaryView: View {
 
 // Helper components for better UI organization
 struct ProfileCard<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     let isExpanded: Bool
     let onTap: () -> Void
     let content: Content
     var count: Int? = nil
     
     init(
-        title: String,
+        title: LocalizedStringKey,
         isExpanded: Bool,
         onTap: @escaping () -> Void,
         count: Int? = nil,
@@ -354,7 +354,7 @@ struct ProfileCard<Content: View>: View {
 
 struct ContactRow: View {
     let icon: String
-    let title: String
+    let title: LocalizedStringKey
     let value: String
     
     var body: some View {
@@ -379,7 +379,7 @@ struct ContactRow: View {
 }
 
 struct EmptyStateView: View {
-    let message: String
+    let message: LocalizedStringKey
     let icon: String
     
     var body: some View {

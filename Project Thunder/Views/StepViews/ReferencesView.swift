@@ -12,7 +12,7 @@ struct ReferencesView: View {
         VStack {
             // Referansları listeleyen bölüm
             if dataManager.references.isEmpty {
-                Text("No references added yet")
+                Text(LocalizedStringKey("no_references"))
                     .foregroundColor(.gray)
                     .padding()
             } else {
@@ -32,7 +32,7 @@ struct ReferencesView: View {
                             Button(role: .destructive) {
                                 dataManager.deleteReference(at: index)
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Label(LocalizedStringKey("delete"), systemImage: "trash")
                             }
                             
                             Button {
@@ -40,7 +40,7 @@ struct ReferencesView: View {
                                 editingIndex = index
                                 showingEditReference = true
                             } label: {
-                                Label("Edit", systemImage: "pencil")
+                                Label(LocalizedStringKey("edit"), systemImage: "pencil")
                             }
                             .tint(.blue)
                         }
@@ -55,7 +55,7 @@ struct ReferencesView: View {
                 newReference = Reference(id: UUID(), companyName: "", contactPerson: "", position: "", contactInfo: "")
                 showingAddReference = true 
             }) {
-                Label("Add Reference", systemImage: "plus.circle.fill")
+                Label(LocalizedStringKey("add_reference"), systemImage: "plus.circle.fill")
             }
             .buttonStyle(.borderedProminent)
             .tint(Color("ThemePrimary"))

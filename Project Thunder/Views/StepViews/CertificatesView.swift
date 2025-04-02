@@ -13,7 +13,7 @@ struct CertificatesView: View {
         VStack {
             // Sertifikaları listeleyen bölüm
             if dataManager.certificates.isEmpty {
-                Text("No certificates added yet")
+                Text(LocalizedStringKey("no_certificates"))
                     .foregroundColor(.gray)
                     .padding()
             } else {
@@ -39,7 +39,7 @@ struct CertificatesView: View {
                             Button(role: .destructive) {
                                 dataManager.deleteCertificate(at: index)
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Label(LocalizedStringKey("delete"), systemImage: "trash")
                             }
                             
                             Button {
@@ -47,7 +47,7 @@ struct CertificatesView: View {
                                 editingIndex = index
                                 showingEditCertificate = true
                             } label: {
-                                Label("Edit", systemImage: "pencil")
+                                Label(LocalizedStringKey("edit"), systemImage: "pencil")
                             }
                             .tint(.blue)
                         }
@@ -62,7 +62,7 @@ struct CertificatesView: View {
                 newCertificate = Certificate(id: UUID(), title: "", issuingOrganization: "", issueDate: Date(), documentURL: nil)
                 showingAddCertificate = true 
             }) {
-                Label("Add Certificate", systemImage: "plus.circle.fill")
+                Label(LocalizedStringKey("add_certificate"), systemImage: "plus.circle.fill")
             }
             .buttonStyle(.borderedProminent)
             .tint(Color("ThemePrimary"))

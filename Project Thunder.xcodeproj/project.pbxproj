@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B53DECAE2D9D265F001B2C69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B53DECAC2D9D265F001B2C69 /* Localizable.strings */; };
+		B53DECAF2D9D2660001B2C69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B53DECAC2D9D265F001B2C69 /* Localizable.strings */; };
+		B53DECB02D9D2660001B2C69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B53DECAC2D9D265F001B2C69 /* Localizable.strings */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B53C71682D7B937400079CA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +33,8 @@
 		B53C71572D7B937200079CA9 /* Project Thunder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Thunder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C71672D7B937400079CA9 /* Project ThunderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project ThunderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53C71712D7B937400079CA9 /* Project ThunderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project ThunderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53DECAD2D9D265F001B2C69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B53DECB12D9D439F001B2C69 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +83,7 @@
 		B53C714E2D7B937200079CA9 = {
 			isa = PBXGroup;
 			children = (
+				B53DECAC2D9D265F001B2C69 /* Localizable.strings */,
 				B53C71592D7B937200079CA9 /* Project Thunder */,
 				B53C716A2D7B937400079CA9 /* Project ThunderTests */,
 				B53C71742D7B937400079CA9 /* Project ThunderUITests */,
@@ -187,11 +196,12 @@
 				};
 			};
 			buildConfigurationList = B53C71522D7B937200079CA9 /* Build configuration list for PBXProject "Project Thunder" */;
-			developmentRegion = en;
+			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = B53C714E2D7B937200079CA9;
 			minimizedProjectReferenceProxies = 1;
@@ -212,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53DECAE2D9D265F001B2C69 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53DECAF2D9D2660001B2C69 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53DECB02D9D2660001B2C69 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +281,25 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		B53DECAC2D9D265F001B2C69 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B53DECAD2D9D265F001B2C69 /* en */,
+				B53DECB12D9D439F001B2C69 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		B53C71792D7B937400079CA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -337,6 +363,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

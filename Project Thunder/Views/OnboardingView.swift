@@ -34,11 +34,11 @@ struct OnboardingView: View {
             
             // Güvenli index erişimi
             if currentStep >= 0 && currentStep < steps.count {
-                Text(steps[currentStep].title)
+                Text(LocalizedStringKey(steps[currentStep].title))
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text(steps[currentStep].description)
+                Text(LocalizedStringKey(steps[currentStep].description))
                     .foregroundColor(.gray)
                     .padding(.bottom)
             }
@@ -65,7 +65,7 @@ struct OnboardingView: View {
             
             HStack {
                 if currentStep > 0 {
-                    Button("Back") {
+                    Button(LocalizedStringKey("back")) {
                         withAnimation {
                             // Güvenli geri gitme
                             currentStep = max(0, currentStep - 1)
@@ -75,7 +75,7 @@ struct OnboardingView: View {
                 
                 Spacer()
                 
-                Button(currentStep >= steps.count - 1 ? "Complete Profile" : "Next") {
+                Button(LocalizedStringKey(currentStep >= steps.count - 1 ? "complete_profile" : "next")) {
                     withAnimation {
                         // Güvenli ileri gitme
                         if currentStep < steps.count - 1 {

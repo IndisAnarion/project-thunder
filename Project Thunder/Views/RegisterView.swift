@@ -27,7 +27,7 @@ struct RegisterView: View {
                     
                     Spacer()
                     
-                    Text("Hesap Oluştur")
+                    Text(LocalizedStringKey("register_title"))
                         .font(.title2)
                         .fontWeight(.bold)
                     
@@ -50,11 +50,11 @@ struct RegisterView: View {
                 VStack(spacing: 18) {
                     // Ad Soyad
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Ad Soyad")
+                        Text(LocalizedStringKey("name_label"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
-                        TextField("Ad Soyad", text: $displayName)
+                        TextField(LocalizedStringKey("name_label"), text: $displayName)
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
@@ -63,11 +63,11 @@ struct RegisterView: View {
                     
                     // Email
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Email")
+                        Text(LocalizedStringKey("email_label"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
-                        TextField("Email", text: $email)
+                        TextField(LocalizedStringKey("email_label"), text: $email)
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
@@ -78,11 +78,11 @@ struct RegisterView: View {
                     
                     // Telefon
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Telefon")
+                        Text(LocalizedStringKey("phone_number"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
-                        TextField("Telefon", text: $phoneNumber)
+                        TextField(LocalizedStringKey("phone_number"), text: $phoneNumber)
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
@@ -92,16 +92,16 @@ struct RegisterView: View {
                     
                     // Şifre
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Şifre")
+                        Text(LocalizedStringKey("password_label"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
                         HStack {
                             if showPassword {
-                                TextField("Şifre", text: $password)
+                                TextField(LocalizedStringKey("password_label"), text: $password)
                                     .textContentType(.newPassword)
                             } else {
-                                SecureField("Şifre", text: $password)
+                                SecureField(LocalizedStringKey("password_label"), text: $password)
                                     .textContentType(.newPassword)
                             }
                             
@@ -117,16 +117,16 @@ struct RegisterView: View {
                     
                     // Şifre Tekrar
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Şifre Tekrar")
+                        Text(LocalizedStringKey("confirm_password"))
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
                         HStack {
                             if showConfirmPassword {
-                                TextField("Şifre Tekrar", text: $confirmPassword)
+                                TextField(LocalizedStringKey("confirm_password"), text: $confirmPassword)
                                     .textContentType(.newPassword)
                             } else {
-                                SecureField("Şifre Tekrar", text: $confirmPassword)
+                                SecureField(LocalizedStringKey("confirm_password"), text: $confirmPassword)
                                     .textContentType(.newPassword)
                             }
                             
@@ -150,7 +150,7 @@ struct RegisterView: View {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     } else {
-                        Text("Kaydol")
+                        Text(LocalizedStringKey("register_button"))
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                     }
@@ -165,11 +165,11 @@ struct RegisterView: View {
                 
                 // Zaten hesabınız var mı? Giriş yap
                 HStack {
-                    Text("Zaten hesabınız var mı?")
+                    Text(LocalizedStringKey("already_have_account"))
                         .foregroundColor(.gray)
                     
                     Button(action: { dismiss() }) {
-                        Text("Giriş Yap")
+                        Text(LocalizedStringKey("login_button"))
                             .fontWeight(.semibold)
                             .foregroundColor(Color("ThemePrimary"))
                     }
@@ -181,14 +181,14 @@ struct RegisterView: View {
             Alert(
                 title: Text(viewModel.alertTitle),
                 message: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("Tamam"))
+                dismissButton: .default(Text(LocalizedStringKey("ok_button")))
             )
         }
         .alert(isPresented: $viewModel.showSuccessAlert) {
             Alert(
-                title: Text("Başarılı"),
-                message: Text("Hesabınız başarıyla oluşturuldu. Giriş sayfasına yönlendiriliyorsunuz."),
-                dismissButton: .default(Text("Tamam")) {
+                title: Text(LocalizedStringKey("registration_successful")),
+                message: Text(LocalizedStringKey("redirecting_to_login")),
+                dismissButton: .default(Text(LocalizedStringKey("ok_button"))) {
                     dismiss()
                 }
             )

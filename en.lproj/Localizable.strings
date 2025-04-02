@@ -1,0 +1,79 @@
+/* 
+  Localizable.strings
+  Project Thunder
+
+  Created by Enes Danyıldız (02483932) on 2.04.2025.
+  
+*/
+
+"app_title" = "Proje Thunder";
+"email_label" = "E-posta";
+"password_label" = "Şifre";
+"forgot_password_button" = "Şifremi Unuttum";
+"login_button" = "Giriş Yap";
+"no_account_prompt" = "Hesabın yok mu?";
+"sign_up_button" = "Kaydol";
+"error_title" = "Hata";
+"generic_error_message" = "Bir hata oluştu. Lütfen tekrar deneyin.";
+"login_error_title" = "Giriş Hatası";
+"ok_button" = "Tamam";
+"forgot_password_title" = "Şifremi Unuttum";
+"forgot_password_description" = "Şifre sıfırlama bağlantısı almak için e-posta adresinizi girin.";
+"send_link_button" = "Bağlantı Gönder";
+"reset_password_title" = "Şifreyi Sıfırla";
+"reset_password_description" = "Lütfen yeni şifrenizi girin.";
+"new_password_label" = "Yeni Şifre";
+"reset_password_button" = "Şifreyi Sıfırla";
+"register_title" = "Hesap Oluştur";
+"name_label" = "Ad Soyad";
+"register_button" = "Kaydol";
+"two_factor_title" = "İki Faktörlü Kimlik Doğrulama";
+"two_factor_description" = "E-postanıza gönderilen 6 haneli kodu girin.";
+"verify_button" = "Doğrula";
+"no_references" = "Henüz referans eklenmedi";
+"add_reference" = "Referans Ekle";
+"no_projects" = "Henüz proje eklenmedi";
+"add_project" = "Proje Ekle";
+"no_certificates" = "Henüz sertifika eklenmedi";
+"add_certificate" = "Sertifika Ekle";
+"delete" = "Sil";
+"edit" = "Düzenle";
+"back" = "Geri";
+"complete_profile" = "Profili Tamamla";
+"next" = "İleri";
+"your_name" = "Adınız";
+"no_biography" = "Henüz biyografi eklenmedi.";
+"biography" = "Biyografi";
+"contact_information" = "İletişim Bilgileri";
+"phone" = "Telefon";
+"email" = "E-posta";
+"location" = "Konum";
+"website" = "Web Sitesi";
+"not_provided" = "Belirtilmemiş";
+"references" = "Referanslar";
+"projects" = "Projeler";
+"certificates" = "Sertifikalar";
+"document_attached" = "Belge Ekli";
+"edit_profile" = "Profili Düzenle";
+"profile" = "Profil";
+"collapse_all" = "Tümünü Daralt";
+"tell_about_expertise" = "Uzmanlık ve deneyiminizi paylaşın";
+"character_count" = "%d/500 karakter";
+"phone_number" = "Telefon Numarası";
+"website_optional" = "Web Sitesi (İsteğe Bağlı)";
+"error_invalid_url" = "URL geçerli değil.";
+"error_invalid_response" = "Sunucudan geçersiz yanıt alındı.";
+"error_invalid_data" = "Sunucudan geçersiz veri alındı.";
+"error_network" = "Ağ hatası: %@";
+"error_decoding" = "Veri dönüşüm hatası: %@";
+"error_unspecified" = "Beklenmeyen hata: %@";
+"error_server" = "Sunucu hatası: %@";
+"error_unauthorized" = "Yetkilendirme hatası. Lütfen tekrar giriş yapın.";
+"error_not_found" = "İstenen kaynak bulunamadı.";
+"error_bad_request" = "Geçersiz istek: %@";
+"confirm_password" = "Şifreyi Doğrula";
+"already_have_account" = "Zaten bir hesabınız var mı?";
+"registration_successful" = "Kayıt Başarılı";
+"redirecting_to_login" = "Giriş sayfasına yönlendiriliyorsunuz.";
+"resend_code" = "Kodu Yeniden Gönder";
+"resend_code_timer" = "%d saniye sonra tekrar isteyebilirsiniz.";

@@ -15,25 +15,25 @@ enum APIError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
-            return "URL geçerli değil."
+            return NSLocalizedString("error_invalid_url", comment: "Error when URL is invalid")
         case .invalidResponse:
-            return "Sunucudan geçersiz yanıt alındı."
+            return NSLocalizedString("error_invalid_response", comment: "Error when server response is invalid")
         case .invalidData:
-            return "Sunucudan geçersiz veri alındı."
+            return NSLocalizedString("error_invalid_data", comment: "Error when data from server is invalid")
         case .network(let error):
-            return "Ağ hatası: \(error.localizedDescription)"
+            return String(format: NSLocalizedString("error_network", comment: "Network error with description"), error.localizedDescription)
         case .decoding(let error):
-            return "Veri dönüşüm hatası: \(error.localizedDescription)"
+            return String(format: NSLocalizedString("error_decoding", comment: "Error when decoding data"), error.localizedDescription)
         case .unspecified(let error):
-            return "Beklenmeyen hata: \(error.localizedDescription)"
+            return String(format: NSLocalizedString("error_unspecified", comment: "Unexpected error"), error.localizedDescription)
         case .serverError(let message):
-            return "Sunucu hatası: \(message)"
+            return String(format: NSLocalizedString("error_server", comment: "Server error with message"), message)
         case .unauthorized:
-            return "Yetkilendirme hatası. Lütfen tekrar giriş yapın."
+            return NSLocalizedString("error_unauthorized", comment: "Authorization error")
         case .notFound:
-            return "İstenen kaynak bulunamadı."
+            return NSLocalizedString("error_not_found", comment: "Resource not found error")
         case .badRequest(let message):
-            return "Geçersiz istek: \(message)"
+            return String(format: NSLocalizedString("error_bad_request", comment: "Bad request error with message"), message)
         }
     }
 }

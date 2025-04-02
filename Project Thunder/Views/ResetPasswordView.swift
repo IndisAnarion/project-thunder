@@ -25,7 +25,7 @@ struct ResetPasswordView: View {
                 
                 Spacer()
                 
-                Text("Şifre Sıfırlama")
+                Text(LocalizedStringKey("reset_password_title"))
                     .font(.title2)
                     .fontWeight(.bold)
                 
@@ -47,7 +47,7 @@ struct ResetPasswordView: View {
                 .foregroundColor(Color("ThemePrimary"))
             
             // Açıklama
-            Text("Lütfen yeni şifrenizi girin")
+            Text(LocalizedStringKey("reset_password_description"))
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray)
@@ -55,7 +55,7 @@ struct ResetPasswordView: View {
             
             // Yeni şifre
             VStack(alignment: .leading, spacing: 8) {
-                Text("Yeni Şifre")
+                Text(LocalizedStringKey("new_password_label"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
                 
@@ -125,7 +125,7 @@ struct ResetPasswordView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
-                    Text("Şifremi Sıfırla")
+                    Text(LocalizedStringKey("reset_password_button"))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }

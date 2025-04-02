@@ -1,5 +1,5 @@
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct AuthenticationView: View {
     @StateObject private var viewModel = AuthenticationViewModel()
@@ -19,12 +19,12 @@ struct AuthenticationView: View {
                 .frame(width: 100, height: 100)
                 .foregroundColor(Color("ThemePrimary"))
             
-            Text("Project Thunder")
+            Text(LocalizedStringKey("app_title"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            VStack(spacing: 15) {
-                TextField("Email", text: $email)
+            VStack(alignment: .leading, spacing: 8) {
+                TextField(LocalizedStringKey("email_label"), text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
@@ -32,26 +32,34 @@ struct AuthenticationView: View {
                 
                 HStack {
                     if showPassword {
-                        TextField("Şifre", text: $password)
+                        TextField(LocalizedStringKey("password_label"), text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .textContentType(.password)
+                            .overlay(
+                                Button(action: { showPassword.toggle() }) {
+                                    Image(systemName: showPassword ? "eye.slash" : "eye")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.trailing, 10), alignment: .trailing
+                            )
                     } else {
-                        SecureField("Şifre", text: $password)
+                        SecureField(LocalizedStringKey("password_label"), text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .textContentType(.password)
-                    }
-                    
-                    Button(action: { showPassword.toggle() }) {
-                        Image(systemName: showPassword ? "eye.slash" : "eye")
-                            .foregroundColor(.gray)
+                            .overlay(
+                                Button(action: { showPassword.toggle() }) {
+                                    Image(systemName: showPassword ? "eye.slash" : "eye")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.trailing, 10), alignment: .trailing
+                            )
                     }
                 }
                 
-                // Şifremi unuttum bağlantısı
                 HStack {
                     Spacer()
                     Button(action: { showForgotPassword = true }) {
-                        Text("Şifremi Unuttum")
+                        Text(LocalizedStringKey("forgot_password_button"))
                             .font(.footnote)
                             .foregroundColor(Color("ThemePrimary"))
                     }
@@ -66,7 +74,7 @@ struct AuthenticationView: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                 } else {
-                    Text("Giriş Yap")
+                    Text(LocalizedStringKey("login_button"))
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }
@@ -79,13 +87,12 @@ struct AuthenticationView: View {
             .disabled(viewModel.isLoading || !isFormValid())
             .opacity(isFormValid() ? 1.0 : 0.7)
             
-            // Kayıt olma bağlantısı
             HStack {
-                Text("Hesabın yok mu?")
+                Text(LocalizedStringKey("no_account_prompt"))
                     .foregroundColor(.gray)
                 
                 Button(action: { showRegister = true }) {
-                    Text("Kaydol")
+                    Text(LocalizedStringKey("sign_up_button"))
                         .fontWeight(.semibold)
                         .foregroundColor(Color("ThemePrimary"))
                 }
@@ -104,7 +111,6 @@ struct AuthenticationView: View {
                 email: email,
                 password: password,
                 onSuccess: { token, user in
-                    // Başarılı giriş sonrası OnboardingView'a yönlendir
                     viewModel.setAuthenticated(token: token, user: user)
                 }
             )
@@ -114,9 +120,9 @@ struct AuthenticationView: View {
         }
         .alert(isPresented: $viewModel.showAlert) {
             Alert(
-                title: Text(viewModel.alertTitle),
-                message: Text(viewModel.alertMessage),
-                dismissButton: .default(Text("Tamam"))
+                title: Text(LocalizedStringKey("error_title")),
+                message: Text(LocalizedStringKey("generic_error_message")),
+                dismissButton: .default(Text(LocalizedStringKey("ok_button")))
             )
         }
     }

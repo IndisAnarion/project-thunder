@@ -5,7 +5,7 @@ struct BiographyView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Tell us about your expertise and experience")
+            Text(LocalizedStringKey("tell_about_expertise"))
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -17,7 +17,7 @@ struct BiographyView: View {
                         .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                 )
             
-            Text("\(biography.count)/500 characters")
+            Text(String(format: NSLocalizedString("character_count", comment: "Character count"), biography.count))
                 .font(.caption)
                 .foregroundColor(biography.count > 500 ? .red : .gray)
         }
