@@ -26,7 +26,16 @@ extension APIEndpoint {
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        // Mevcut dil ayarını al
+        let currentLanguage = LocalizationManager.shared.currentLanguage
+        // Dil kodunu sunucunun beklediği formata dönüştür (tr -> tr-TR, en -> en-US)
+        let acceptLanguage = currentLanguage.lowercased() == "tr" ? "tr-TR" : "en-US"
+        
+        // Header'ları döndür
+        return [
+            "Content-Type": "application/json",
+            "Accept-Language": acceptLanguage
+        ]
     }
     
     var queryParameters: [String: String]? {
