@@ -31,11 +31,18 @@ extension APIEndpoint {
         // Dil kodunu sunucunun beklediği formata dönüştür (tr -> tr-TR, en -> en-US)
         let acceptLanguage = currentLanguage.lowercased() == "tr" ? "tr-TR" : "en-US"
         
-        // Header'ları döndür
-        return [
+        // Temel header'ları oluştur
+        var defaultHeaders = [
             "Content-Type": "application/json",
             "Accept-Language": acceptLanguage
         ]
+        
+        // Eğer token varsa ve geçerliyse, Authorization header'ını ekle
+        if let accessToken = TokenManager.getAccessToken(), TokenManager.isAccessTokenValid() {
+            defaultHeaders["Authorization"] = "Bearer \(accessToken)"
+        }
+        
+        return defaultHeaders
     }
     
     var queryParameters: [String: String]? {

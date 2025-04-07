@@ -1,5 +1,9 @@
 import Foundation
 
+struct RefreshTokenRequest: Codable {
+    let refreshToken: String
+}
+
 enum AuthEndpoints: APIEndpoint {
     case register(request: RegisterRequest)
     case login(request: LoginRequest)
@@ -7,6 +11,7 @@ enum AuthEndpoints: APIEndpoint {
     case forgotPassword(request: ForgotPasswordRequest)
     case resetPassword(request: ResetPasswordRequest)
     case confirmEmail(request: ConfirmEmailRequest)
+    case refreshToken(request: RefreshTokenRequest)
     
     var path: String {
         switch self {
@@ -22,12 +27,14 @@ enum AuthEndpoints: APIEndpoint {
             return "/api/auth/reset-password"
         case .confirmEmail:
             return "/api/auth/confirm-email"
+        case .refreshToken:
+            return "/api/auth/refresh-token"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .register, .login, .twoFactorLogin, .forgotPassword, .resetPassword, .confirmEmail:
+        case .register, .login, .twoFactorLogin, .forgotPassword, .resetPassword, .confirmEmail, .refreshToken:
             return .post
         }
     }
@@ -66,13 +73,20 @@ enum AuthEndpoints: APIEndpoint {
                 "userId": request.userId,
                 "token": request.token
             ]
+        case .refreshToken(let request):
+            return ["refreshToken": request.refreshToken]
         }
     }
     
-    // Token var ise authorization header'ını ekleyen yardımcı metot
-    func withAuthorization(token: String) -> [String: String] {
-        var headers = ["Content-Type": "application/json"]
-        headers["Authorization"] = "Bearer \(token)"
-        return headers
-    }
+    // var headers: [String: String]? {
+    //     var baseHeaders = ["Content-Type": "application/json"]
+        
+    //     if let token = TokenManager.getAccessToken(), 
+    //        !(self == .refreshToken),
+    //        TokenManager.isAccessTokenValid() {
+    //         baseHeaders["Authorization"] = "Bearer \(token)"
+    //     }
+        
+    //     return baseHeaders
+    // }
 }
