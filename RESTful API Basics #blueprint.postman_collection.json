@@ -1,0 +1,2101 @@
+{
+	"info": {
+		"_postman_id": "6ead479b-9c6e-4180-b74d-57a04de0e981",
+		"name": "RESTful API Basics #blueprint",
+		"description": "# 🚀 Get started here\n\nThis collection guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this collection**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these request types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT and PATCH requests.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a variable called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more scripts in \"Tests\" to verify if the API works as expected and execute flows.\n    \n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Managing environments](https://learning.postman.com/docs/sending-requests/managing-environments/)  \n[Writing scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1384012"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"displayName\": \"Indis Anarion\",\n  \"email\": \"enesdanyildiz94@hotmail.com\",\n  \"password\": \"Pt-252Wer\",\n  \"phoneNumber\": \"905052192345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/register",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"displayName\": \"Indis Anarion\",\n    \"email\": \"enesdannyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wer\",\n    \"phoneNumber\": \"905052192345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/register",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Mar 2025 21:09:53 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"User created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// pm.test(\"Response status should be 200\", function () {",
+									"//     pm.response.to.have.status(200);",
+									"// });",
+									"",
+									"// pm.test(\"Response should contain success status\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData.status).to.eql(\"Success\");",
+									"// });",
+									"",
+									"// pm.test(\"Access token should be a valid JWT\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData).to.have.property(\"accessToken\");",
+									"//     // JWT üç parçadan oluşur",
+									"//     pm.expect(jsonData.accessToken.split(\".\")).to.have.lengthOf(3); ",
+									"//     // Environment variable olarak kaydet",
+									"//     pm.environment.set(\"accessToken\", jsonData.accessToken); ",
+									"// });",
+									"",
+									"// pm.test(\"Refresh token should be present\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData).to.have.property(\"refreshToken\");",
+									"//     pm.expect(jsonData.refreshToken).to.be.a(\"string\");",
+									"//     // Environment variable olarak kaydet",
+									"//     pm.environment.set(\"refreshToken\", jsonData.refreshToken); ",
+									"// });",
+									"",
+									"// pm.test(\"User object should have expected properties\", function () {",
+									"//     var jsonData = pm.response.json();",
+									"//     pm.expect(jsonData).to.have.property(\"user\");",
+									"//     pm.expect(jsonData.user).to.have.property(\"email\").that.is.a(\"string\");",
+									"//     pm.expect(jsonData.user).to.have.property(\"displayName\").that.is.a(\"string\");",
+									"// });",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/login",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wer\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/login",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 13:29:33 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"TwoFactorRequired\",\n    \"message\": \"Verification code has been sent to your email\",\n    \"user\": {\n        \"email\": \"enesdanyildiz94@hotmail.com\"\n    }\n}"
+						},
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wert\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/login",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 01:12:25 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"TwoFactorRequired\",\n    \"message\": {\n        \"name\": \"TwoFactorRequired\",\n        \"value\": \"TwoFactorRequired\",\n        \"resourceNotFound\": true,\n        \"searchedLocation\": \"ProjectThunder.API..Resources.SharedResources.Resources.SharedResources.SharedResources\"\n    },\n    \"user\": {\n        \"email\": \"enesdanyildiz94@hotmail.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "2fa-login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status should be 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response should contain success status\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"pm.test(\"Access token should be a valid JWT\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"accessToken\");",
+									"    // JWT üç parçadan oluşur",
+									"    pm.expect(jsonData.accessToken.split(\".\")).to.have.lengthOf(3); ",
+									"    // Environment variable olarak kaydet",
+									"    pm.environment.set(\"accessToken\", jsonData.accessToken); ",
+									"});",
+									"",
+									"pm.test(\"Refresh token should be present\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"refreshToken\");",
+									"    pm.expect(jsonData.refreshToken).to.be.a(\"string\");",
+									"    // Environment variable olarak kaydet",
+									"    pm.environment.set(\"refreshToken\", jsonData.refreshToken); ",
+									"});",
+									"",
+									"pm.test(\"User object should have expected properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"user\");",
+									"    pm.expect(jsonData.user).to.have.property(\"email\").that.is.a(\"string\");",
+									"    pm.expect(jsonData.user).to.have.property(\"displayName\").that.is.a(\"string\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wer\",\n    \"twoFactorCode\": \"727960\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/two-factor-login",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"two-factor-login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "2fa-login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wer\",\n    \"twoFactorCode\": \"727960\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/two-factor-login",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"two-factor-login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 13:31:13 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQ0OTQyY2RlLTI0MzYtNDI3OS1iZDAxLTMyZWJhNzhlZDU0MiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJlbmVzZGFueWlsZGl6OTRAaG90bWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJlbmVzZGFueWlsZGl6OTRAaG90bWFpbC5jb20iLCJqdGkiOiI1Yjk1NjlkZS1kNmYxLTRmZWMtYjFiYS0wZGE3MjA2MTY5NGQiLCJUd29GYWN0b3JFbmFibGVkIjoidHJ1ZSIsImV4cCI6MTc0MzE3MjI2NiwiaXNzIjoiUHJvamVjdFRodW5kZXJBUEkiLCJhdWQiOiJQcm9qZWN0VGh1bmRlckNsaWVudHMifQ.H0o4Ny44qsHaS5M9Ula22Uz7gjB20iOWL0PebnLklDk\",\n    \"refreshToken\": \"R816DJBSRrTHAB5e3VGfXyw2QlPcLhgIv/GqEqjHV980zLEj/KpB1ZZgER060EbvT5WL6Jcv0gPFZ1DtSvuo0w==\",\n    \"user\": {\n        \"email\": \"enesdanyildiz94@hotmail.com\",\n        \"displayName\": \"Indis Anarion\",\n        \"phoneNumber\": \"905052192345\",\n        \"profilePictureUrl\": null,\n        \"company\": null\n    }\n}"
+						},
+						{
+							"name": "2fa-login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"password\": \"Pt-252Wer\",\n    \"twoFactorCode\": \"727960\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/two-factor-login",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"two-factor-login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 13:31:13 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQ0OTQyY2RlLTI0MzYtNDI3OS1iZDAxLTMyZWJhNzhlZDU0MiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJlbmVzZGFueWlsZGl6OTRAaG90bWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJlbmVzZGFueWlsZGl6OTRAaG90bWFpbC5jb20iLCJqdGkiOiI1Yjk1NjlkZS1kNmYxLTRmZWMtYjFiYS0wZGE3MjA2MTY5NGQiLCJUd29GYWN0b3JFbmFibGVkIjoidHJ1ZSIsImV4cCI6MTc0MzE3MjI2NiwiaXNzIjoiUHJvamVjdFRodW5kZXJBUEkiLCJhdWQiOiJQcm9qZWN0VGh1bmRlckNsaWVudHMifQ.H0o4Ny44qsHaS5M9Ula22Uz7gjB20iOWL0PebnLklDk\",\n    \"refreshToken\": \"R816DJBSRrTHAB5e3VGfXyw2QlPcLhgIv/GqEqjHV980zLEj/KpB1ZZgER060EbvT5WL6Jcv0gPFZ1DtSvuo0w==\",\n    \"user\": {\n        \"email\": \"enesdanyildiz94@hotmail.com\",\n        \"displayName\": \"Indis Anarion\",\n        \"phoneNumber\": \"905052192345\",\n        \"profilePictureUrl\": null,\n        \"company\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/forgot-password",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "forgot-password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"enesdanyildiz94@hotmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/forgot-password",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"forgot-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 19:37:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"If your email is registered, a password reset link has been sent.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "confirm-email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"44942cde-2436-4279-bd01-32eba78ed542\",\n    \"token\": \"MjcyMzYy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/confirm-email",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"confirm-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "confirm-email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"44942cde-2436-4279-bd01-32eba78ed542\",\n    \"token\": \"MjcyMzYy\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/confirm-email",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"confirm-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 13:23:18 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Thank you for confirming your email. You can now login to your account.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"44942cde-2436-4279-bd01-32eba78ed542\",\n    \"token\": \"Q2ZESjhKYUV6RnJXdWExTHZEdjREOEY0VnVxVlFqK0xJSVE2TWxWMUhCQzhoZ2ptUnlDdUVzN0JzRXRtYW5nTkh5K1JNWUJYZkRwaTBoV2EwMkpHdU44SmlqQW9DSm9yNDVSZE9mWENESDRRZWp2aFBjVVF5VW94aDcrQ0M1L1ZtVmtJa3F0Q0p2NTU5TUNaTDdyUC9qcVFXUmoxcWRaMDdHT1JtUFREZzkxTC9xcXcyMS9CbFAvMnFMdGNPeVRCSldEVEo0WTNWRTFnMXlMR2NIZkdxQjNja1JuVzNDUmw3VENqMkJJK0FCSUluTFNs\",\n    \"newPassword\": \"Pt-252Wert\",\n    \"confirmPassword\": \"Pt-252Wert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/auth/reset-password",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "reset-password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"44942cde-2436-4279-bd01-32eba78ed542\",\n    \"token\": \"Q2ZESjhKYUV6RnJXdWExTHZEdjREOEY0VnVxVlFqK0xJSVE2TWxWMUhCQzhoZ2ptUnlDdUVzN0JzRXRtYW5nTkh5K1JNWUJYZkRwaTBoV2EwMkpHdU44SmlqQW9DSm9yNDVSZE9mWENESDRRZWp2aFBjVVF5VW94aDcrQ0M1L1ZtVmtJa3F0Q0p2NTU5TUNaTDdyUC9qcVFXUmoxcWRaMDdHT1JtUFREZzkxTC9xcXcyMS9CbFAvMnFMdGNPeVRCSldEVEo0WTNWRTFnMXlMR2NIZkdxQjNja1JuVzNDUmw3VENqMkJJK0FCSUluTFNs\",\n    \"newPassword\": \"Pt-252Wert\",\n    \"confirmPassword\": \"Pt-252Wert\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/auth/reset-password",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 19:39:54 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Your password has been reset successfully. You can now login with your new password.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "get-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Response içeriğinin doğru formatta olduğunu kontrol et",
+									"pm.test(\"Response status is success\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// HTTP status code'un 200 olduğunu kontrol et",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Response formatının JSON olduğunu kontrol et",
+									"pm.test(\"Response should be in JSON format\", function () {",
+									"    pm.response.to.be.json;",
+									"});",
+									"",
+									"// Profil nesnesinin var olduğunu kontrol et",
+									"pm.test(\"Profile object should exist\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"});",
+									"",
+									"// Profil nesnesinin gerekli alanları içerdiğini kontrol et",
+									"pm.test(\"Profile object contains required fields\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('id');",
+									"    pm.expect(jsonData.profile).to.have.property('userId');",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"    pm.expect(jsonData.profile).to.have.property('biography');",
+									"    pm.expect(jsonData.profile).to.have.property('contactInformation');",
+									"});",
+									"",
+									"// ContactInformation nesnesinin mevcut olduğunu kontrol et",
+									"pm.test(\"ContactInformation object should exist\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.contactInformation).to.be.an('object');",
+									"});",
+									"",
+									"// ContactInformation nesnesinin gerekli alanları içerdiğini kontrol et",
+									"pm.test(\"ContactInformation contains required fields\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.contactInformation).to.have.property('id');",
+									"    pm.expect(jsonData.profile.contactInformation).to.have.property('email');",
+									"    pm.expect(jsonData.profile.contactInformation).to.have.property('phoneNumber');",
+									"    pm.expect(jsonData.profile.contactInformation).to.have.property('address');",
+									"    pm.expect(jsonData.profile.contactInformation).to.have.property('website');",
+									"});",
+									"",
+									"// Koleksiyon alanlarının dizi olduğunu kontrol et",
+									"pm.test(\"Collection fields should be arrays\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.references).to.be.an('array');",
+									"    pm.expect(jsonData.profile.projects).to.be.an('array');",
+									"    pm.expect(jsonData.profile.certificates).to.be.an('array');",
+									"});",
+									"",
+									"// Biography alanının belirli uzunluğun üzerinde olduğunu kontrol et",
+									"pm.test(\"Biography should have sufficient length\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.biography.length).to.be.greaterThan(50);",
+									"});",
+									"",
+									"// Ortam değişkeninden profil ID'sini çek ve kontrol et",
+									"pm.test(\"Profile ID should match expected value\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var expectedId = pm.environment.get(\"expectedProfileId\") || 1;",
+									"    pm.expect(jsonData.profile.id).to.eql(expectedId);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/profile/get-profile",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"get-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/profile/get-profile",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"get-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Apr 2025 13:44:44 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"profile\": {\n        \"id\": 1,\n        \"userId\": \"44942cde-2436-4279-bd01-32eba78ed542\",\n        \"displayName\": \"Indis Anarion2\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\",\n        \"biography\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\",\n        \"contactInformation\": {\n            \"id\": null,\n            \"email\": null,\n            \"phoneNumber\": null,\n            \"address\": null,\n            \"website\": null\n        },\n        \"references\": [],\n        \"projects\": [],\n        \"certificates\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update-biography",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test Suite: Update Biography Endpoint",
+									"",
+									"// 1. Prerequisites:",
+									"//   - Ensure you have a valid JWT token for an authenticated user.",
+									"//   - Replace 'YOUR_JWT_TOKEN' with the actual token.",
+									"//   - Set the 'biography' variable in the request body with the desired text.",
+									"",
+									"// 2. Request Configuration:",
+									"//   - Method: PUT",
+									"//   - Endpoint: /api/Profile/update-biography",
+									"//   - Headers:",
+									"//     - Content-Type: application/json",
+									"//     - Authorization: Bearer YOUR_JWT_TOKEN",
+									"",
+									"// 3. Test Execution:",
+									"pm.test(\"Successful biography update\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.response.to.be.json;",
+									"",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"",
+									"    // Profile details verification",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"    pm.expect(jsonData.profile.displayName).to.be.a('string');",
+									"    pm.expect(jsonData.profile.biography).to.be.a('string');",
+									"    pm.expect(jsonData.profile.profilePictureUrl === null || typeof jsonData.profile.profilePictureUrl === 'string').to.be.true;",
+									"",
+									"    // Optional: Verify biography content if needed",
+									"    // pm.expect(jsonData.Profile.biography).to.eql(\"Your Expected Biography Text\");",
+									"});",
+									"",
+									"pm.test(\"Response has required profile properties\", () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property(\"displayName\");",
+									"    pm.expect(jsonData.profile).to.have.property(\"profilePictureUrl\");",
+									"    pm.expect(jsonData.profile).to.have.property(\"biography\");",
+									"});",
+									"",
+									"pm.test(\"Check Profile properties are not null\", () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"    //profilePictureUrl can be null",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", () => {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}",
+								"name": "authorization",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/update-biography",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"update-biography"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update-biography",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n    \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/update-biography",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"update-biography"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Apr 2025 12:30:05 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Biyografi başarıyla güncellendi.\",\n    \"profile\": {\n        \"displayName\": \"Indis Anarion\",\n        \"profilePictureUrl\": null,\n        \"biography\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Temel Response Kontrolleri",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response format should be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.jsonBody();",
+									"});",
+									"",
+									"// Response İçerik Yapısı Kontrolleri",
+									"pm.test(\"Response structure is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"    ",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"});",
+									"",
+									"// Status Değeri Kontrolü",
+									"pm.test(\"Status should be 'Success'\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// Message İçeriği Kontrolü",
+									"pm.test(\"Message content is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Profil başarıyla güncellendi.\");",
+									"});",
+									"",
+									"// profile Alanları Kontrolü",
+									"pm.test(\"profile has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"});",
+									"",
+									"// Boş Olmama Kontrolleri",
+									"pm.test(\"No null values in critical fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.not.be.null;",
+									"    pm.expect(jsonData.message).to.not.be.null;",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"});",
+									"",
+									"// String Uzunluk Kontrolleri",
+									"pm.test(\"Field lengths are within acceptable ranges\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.displayName.length).to.be.at.most(100);",
+									"    pm.expect(jsonData.profile.profilePictureUrl.length).to.be.at.most(255);",
+									"});",
+									"",
+									"// Ortam Değişkenleri Kaydetme (İlerideki istekler için)",
+									"pm.environment.set(\"userDisplayName\", pm.response.json().profile.displayName);",
+									"pm.environment.set(\"userProfilePictureUrl\", pm.response.json().profile.profilePictureUrl);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "displayName",
+									"value": "Indis Anarion 3",
+									"type": "text"
+								},
+								{
+									"key": "profilePhoto",
+									"type": "file",
+									"src": "/Users/enesdanyildiz02483932/Downloads/QRCode.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/update-profile",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"update-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update-profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "displayName",
+											"value": "Indis Anarion 3",
+											"type": "text"
+										},
+										{
+											"key": "profilePhoto",
+											"type": "file",
+											"src": "/Users/enesdanyildiz02483932/Downloads/QRCode.png",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/update-profile",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"update-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 20:38:38 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Profil başarıyla güncellendi.\",\n    \"profile\": {\n        \"displayName\": \"Indis Anarion 3\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "contact-information",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Temel Response Kontrolleri",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Response format should be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.jsonBody();",
+									"});",
+									"",
+									"// Response İçerik Yapısı Kontrolleri",
+									"pm.test(\"Response structure is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData).to.have.property('contactInformation');",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"    ",
+									"    pm.expect(jsonData.contactInformation).to.be.an('object');",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"});",
+									"",
+									"// Status Değeri Kontrolü",
+									"pm.test(\"Status should be 'Success'\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// profile Alanları Kontrolü",
+									"pm.test(\"profile has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    // pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"});",
+									"",
+									"// Format Doğrulama Testleri",
+									"pm.test(\"Email should be in valid format\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;",
+									"    pm.expect(emailRegex.test(jsonData.contactInformation.email)).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Phone number should be in valid format\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    const phoneRegex = /^\\+\\d{10,15}$/;",
+									"    pm.expect(phoneRegex.test(jsonData.contactInformation.phoneNumber)).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Website should be a valid URL\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    const urlRegex = /^(http|https):\\/\\/[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$/i;",
+									"    pm.expect(urlRegex.test(jsonData.contactInformation.website)).to.be.true;",
+									"});",
+									"",
+									"// Boş Olmama Kontrolleri",
+									"pm.test(\"No null values in critical fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.not.be.null;",
+									"    pm.expect(jsonData.message).to.not.be.null;",
+									"    pm.expect(jsonData.contactInformation.email).to.not.be.null;",
+									"    pm.expect(jsonData.contactInformation.phoneNumber).to.not.be.null;",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"});",
+									"",
+									"// String Uzunluk Kontrolleri",
+									"pm.test(\"Field lengths are within acceptable ranges\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.contactInformation.email.length).to.be.at.most(100);",
+									"    pm.expect(jsonData.contactInformation.phoneNumber.length).to.be.at.most(20);",
+									"    pm.expect(jsonData.contactInformation.address.length).to.be.at.most(500);",
+									"    pm.expect(jsonData.profile.displayName.length).to.be.at.most(100);",
+									"});",
+									"",
+									"// Ortam Değişkenleri Kaydetme (İlerideki istekler için)",
+									"pm.environment.set(\"userEmail\", pm.response.json().contactInformation.email);",
+									"pm.environment.set(\"userPhoneNumber\", pm.response.json().contactInformation.phoneNumber);",
+									"pm.environment.set(\"userDisplayName\", pm.response.json().profile.displayName);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+905551234569\",\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"website\": \"https://website.com\",\n    \"address\": \"Avcılar/İstanbul, Türkiye\"\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/contact-information",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"contact-information"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "contact-information",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+905551234568\",\n    \"email\": \"enesdanyildiz94@hotmail.com\",\n    \"website\": \"https://website.com\",\n    \"address\": \"İstanbul, Türkiye\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/contact-information",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"contact-information"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 04 Apr 2025 13:58:03 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"İletişim bilgileri başarıyla güncellendi.\",\n    \"contactInformation\": {\n        \"email\": \"enesdanyildiz94@hotmail.com\",\n        \"phoneNumber\": \"+905551234568\",\n        \"website\": \"https://website.com\",\n        \"address\": \"İstanbul, Türkiye\"\n    },\n    \"profile\": {\n        \"displayName\": \"Indis Anarion2\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Temel Response Kontrolleri",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response format should be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.jsonBody();",
+									"});",
+									"",
+									"// Response İçerik Yapısı Kontrolleri",
+									"pm.test(\"Response structure is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData).to.have.property('projects');",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"    ",
+									"    pm.expect(jsonData.projects).to.be.an('array');",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"});",
+									"",
+									"// Status Değeri Kontrolü",
+									"pm.test(\"Status should be 'Success'\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// Message İçeriği Kontrolü",
+									"pm.test(\"Message content is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Projeler başarıyla güncellendi.\");",
+									"});",
+									"",
+									"// projects Alanları Kontrolü",
+									"pm.test(\"projects has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.projects).to.be.an('array');",
+									"    pm.expect(jsonData.projects.length).to.eql(1);",
+									"    ",
+									"    jsonData.projects.forEach(function(project) {",
+									"        pm.expect(project).to.have.property('id');",
+									"        pm.expect(project).to.have.property('title');",
+									"        pm.expect(project).to.have.property('description');",
+									"        pm.expect(project).to.have.property('date');",
+									"    });",
+									"});",
+									"",
+									"// profile Alanları Kontrolü",
+									"pm.test(\"profile has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"});",
+									"",
+									"",
+									"// Boş Olmama Kontrolleri",
+									"pm.test(\"No null values in critical fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.not.be.null;",
+									"    pm.expect(jsonData.message).to.not.be.null;",
+									"    pm.expect(jsonData.projects).to.not.be.null;",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"    pm.expect(jsonData.profile.profilePictureUrl).to.not.be.null;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"projects\": [\n        {\n            \"id\": 1,\n            \"title\": \"Güncellenmiş Proje Başlığı\",\n            \"description\": \"Güncellenmiş proje açıklaması\",\n            \"date\": \"2025-01-15T00:00:00\"\n        }\n        // {\n        //     \"id\": 2,\n        //     \"title\": \"Yeni Proje\",\n        //     \"description\": \"Yeni proje açıklaması\",\n        //     \"date\": \"2025-03-20T00:00:00\"\n        // }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/projects",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "projects",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"projects\": [\n        {\n            \"id\": 1,\n            \"title\": \"Güncellenmiş Proje Başlığı\",\n            \"description\": \"Güncellenmiş proje açıklaması\",\n            \"date\": \"2025-01-15T00:00:00\"\n        }\n        // {\n        //     \"id\": 2,\n        //     \"title\": \"Yeni Proje\",\n        //     \"description\": \"Yeni proje açıklaması\",\n        //     \"date\": \"2025-03-20T00:00:00\"\n        // }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/projects",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 20:42:28 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Projeler başarıyla güncellendi.\",\n    \"projects\": [\n        {\n            \"id\": 1,\n            \"title\": \"Güncellenmiş Proje Başlığı\",\n            \"description\": \"Güncellenmiş proje açıklaması\",\n            \"date\": \"2025-01-15T00:00:00\"\n        }\n    ],\n    \"profile\": {\n        \"displayName\": \"Indis Anarion 3\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "certificates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Temel Response Kontrolleri",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response format should be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.jsonBody();",
+									"});",
+									"",
+									"// Response İçerik Yapısı Kontrolleri",
+									"pm.test(\"Response structure is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData).to.have.property('certificates');",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"    ",
+									"    pm.expect(jsonData.certificates).to.be.an('array');",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"});",
+									"",
+									"// Status Değeri Kontrolü",
+									"pm.test(\"Status should be 'Success'\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// Message İçeriği Kontrolü",
+									"pm.test(\"Message content is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Sertifikalar başarıyla güncellendi.\");",
+									"});",
+									"",
+									"// certificates Alanları Kontrolü",
+									"pm.test(\"certificates has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.certificates).to.be.an('array');",
+									"    ",
+									"    jsonData.certificates.forEach(function(certificate) {",
+									"        pm.expect(certificate).to.have.property('id');",
+									"        pm.expect(certificate).to.have.property('name');",
+									"        pm.expect(certificate).to.have.property('issuingOrganization');",
+									"        pm.expect(certificate).to.have.property('description');",
+									"        pm.expect(certificate).to.have.property('issueDate');",
+									"        pm.expect(certificate).to.have.property('imageUrl');",
+									"    });",
+									"});",
+									"",
+									"// profile Alanları Kontrolü",
+									"pm.test(\"profile has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"});",
+									"",
+									"// Boş Olmama Kontrolleri",
+									"pm.test(\"No null values in critical fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.not.be.null;",
+									"    pm.expect(jsonData.message).to.not.be.null;",
+									"    pm.expect(jsonData.certificates).to.not.be.null;",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"    pm.expect(jsonData.profile.profilePictureUrl).to.not.be.null;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"certificates\": [\n        {\n            \"id\": 1,\n            \"name\": \"Microsoft Certified: Azure Developer Associate\", // ID olmadığı için yeni sertifika eklenecek\n            \"issuingOrganization\": \"Microsoft\",\n            \"description\": \"Developer skills on Microsoft Azure\",\n            \"issueDate\": \"2025-02-21T00:00:00\",\n            \"imageUrl\": null\n        },\n        {\n            \"name\": \"Amazon Certified: AWS Developer Associate\", // ID olmadığı için yeni sertifika eklenecek\n            \"issuingOrganization\": \"Amazon\",\n            \"description\": \"Developer skills on AWS\",\n            \"issueDate\": \"2025-04-20T00:00:00\",\n            \"imageUrl\": null\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/certificates",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"certificates"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "certificates",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"certificates\": [\n        {\n            \"id\": 1,\n            \"name\": \"Microsoft Certified: Azure Developer Associate\", // ID olmadığı için yeni sertifika eklenecek\n            \"issuingOrganization\": \"Microsoft\",\n            \"description\": \"Developer skills on Microsoft Azure\",\n            \"issueDate\": \"2025-02-21T00:00:00\",\n            \"imageUrl\": null\n        }\n        // {\n        //     \"name\": \"Amazon Certified: AWS Developer Associate\", // ID olmadığı için yeni sertifika eklenecek\n        //     \"issuingOrganization\": \"Amazon\",\n        //     \"description\": \"Developer skills on AWS\",\n        //     \"issueDate\": \"2025-04-20T00:00:00\",\n        //     \"imageUrl\": null\n        // }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/certificates",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"certificates"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 20:59:19 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Sertifikalar başarıyla güncellendi.\",\n    \"certificates\": [\n        {\n            \"id\": 1,\n            \"name\": \"Microsoft Certified: Azure Developer Associate\",\n            \"issuingOrganization\": \"Microsoft\",\n            \"description\": \"Developer skills on Microsoft Azure\",\n            \"issueDate\": \"2025-02-21T00:00:00\",\n            \"imageUrl\": null\n        }\n    ],\n    \"profile\": {\n        \"displayName\": \"Indis Anarion 3\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "references",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Temel Response Kontrolleri",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Response format should be JSON\", function () {",
+									"    pm.response.to.be.json;",
+									"    pm.response.to.have.jsonBody();",
+									"});",
+									"",
+									"// Response İçerik Yapısı Kontrolleri",
+									"pm.test(\"Response structure is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object');",
+									"    pm.expect(jsonData).to.have.property('status');",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData).to.have.property('references');",
+									"    pm.expect(jsonData).to.have.property('profile');",
+									"    ",
+									"    pm.expect(jsonData.references).to.be.an('array');",
+									"    pm.expect(jsonData.profile).to.be.an('object');",
+									"});",
+									"",
+									"// Status Değeri Kontrolü",
+									"pm.test(\"Status should be 'Success'\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.eql(\"Success\");",
+									"});",
+									"",
+									"// Message İçeriği Kontrolü",
+									"pm.test(\"Message content is correct\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql(\"Referanslar başarıyla güncellendi.\");",
+									"});",
+									"",
+									"// references Alanları Kontrolü",
+									"pm.test(\"references has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.references).to.be.an('array');",
+									"    pm.expect(jsonData.references.length).to.eql(2);",
+									"    ",
+									"    jsonData.references.forEach(function(reference) {",
+									"        pm.expect(reference).to.have.property('id');",
+									"        pm.expect(reference).to.have.property('contactName');",
+									"        pm.expect(reference).to.have.property('company');",
+									"        pm.expect(reference).to.have.property('position');",
+									"        pm.expect(reference).to.have.property('contactInfo');",
+									"    });",
+									"});",
+									"",
+									"// profile Alanları Kontrolü",
+									"pm.test(\"profile has all required fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile).to.have.property('displayName');",
+									"    pm.expect(jsonData.profile).to.have.property('profilePictureUrl');",
+									"});",
+									"",
+									"// Boş Olmama Kontrolleri",
+									"pm.test(\"No null values in critical fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.status).to.not.be.null;",
+									"    pm.expect(jsonData.message).to.not.be.null;",
+									"    pm.expect(jsonData.references).to.not.be.null;",
+									"    pm.expect(jsonData.profile.displayName).to.not.be.null;",
+									"    pm.expect(jsonData.profile.profilePictureUrl).to.not.be.null;",
+									"});",
+									"",
+									"// String Uzunluk Kontrolleri",
+									"pm.test(\"Field lengths are within acceptable ranges\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.profile.displayName.length).to.be.at.most(100);",
+									"    pm.expect(jsonData.profile.profilePictureUrl.length).to.be.at.most(255);",
+									"});",
+									"",
+									"// Ortam Değişkenleri Kaydetme (İlerideki istekler için)",
+									"pm.environment.set(\"userDisplayName\", pm.response.json().profile.displayName);",
+									"pm.environment.set(\"userProfilePictureUrl\", pm.response.json().profile.profilePictureUrl);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"references\": [\n        {\n            \"contactName\": \"Ahmet Yılmaz\",\n            \"company\": \"ABC Şirketi\",\n            \"position\": \"Genel Müdür\",\n            \"contactInfo\": \"ahmet@example.com\"\n        },\n        {\n            \"contactName\": \"Mehmet Öz\", // ID olmadığı için yeni referans eklenecek\n            \"company\": \"XYZ Teknoloji\",\n            \"position\": \"Yazılım Direktörü\",\n            \"contactInfo\": \"+905551234567\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-url}}/api/profile/references",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"references"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "references",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"references\": [\n        {\n            \"contactName\": \"Ahmet Yılmaz\",\n            \"company\": \"ABC Şirketi\",\n            \"position\": \"Genel Müdür\",\n            \"contactInfo\": \"ahmet@example.com\"\n        },\n        {\n            \"contactName\": \"Mehmet Öz\", // ID olmadığı için yeni referans eklenecek\n            \"company\": \"XYZ Teknoloji\",\n            \"position\": \"Yazılım Direktörü\",\n            \"contactInfo\": \"+905551234567\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base-url}}/api/profile/references",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"references"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Apr 2025 21:00:06 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Referanslar başarıyla güncellendi.\",\n    \"references\": [\n        {\n            \"id\": 1,\n            \"contactName\": \"Ahmet Yılmaz\",\n            \"company\": \"ABC Şirketi\",\n            \"position\": \"Genel Müdür\",\n            \"contactInfo\": \"ahmet@example.com\"\n        },\n        {\n            \"id\": 2,\n            \"contactName\": \"Mehmet Öz\",\n            \"company\": \"XYZ Teknoloji\",\n            \"position\": \"Yazılım Direktörü\",\n            \"contactInfo\": \"+905551234567\"\n        }\n    ],\n    \"profile\": {\n        \"displayName\": \"Indis Anarion 3\",\n        \"profilePictureUrl\": \"/uploads/profile-photos/1743771550644_534956673c214b0dade31e6e8b9e4724.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "check-status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{base-url}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-url}}/api/profile/check-status",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"check-status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "check-status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/profile/check-status",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"check-status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Apr 2025 09:09:41 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel",
+									"type": "text"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"isProfileCompleted\": true\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
